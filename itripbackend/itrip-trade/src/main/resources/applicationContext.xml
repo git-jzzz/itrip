@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:aop="http://www.springframework.org/schema/aop"
+        xmlns:tx="http://www.springframework.org/schema/tx"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+
+  ">
+    <import resource="applicationContext-alipay.xml"/>
+
+    <context:component-scan base-package="cn.itrip.dao"/>
+    <context:component-scan base-package="cn.itrip.trade.service"/>
+
+
+   <!-- &lt;!&ndash; 事务管理 &ndash;&gt;
+    <bean id="transactionManager"
+       class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+       <property name="dataSource" value="dataSource"></property>
+   </bean>
+
+
+    &lt;!&ndash; AOP事务管理 &ndash;&gt;
+     <aop:aspectj-autoproxy />
+    <aop:config proxy-target-class="true">
+        <aop:pointcut expression="execution(* *cn.itrip.auth.service..*(..))" id="transService" />
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="transService" />
+    </aop:config>
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="itriptx**" propagation="REQUIRED"
+                rollback-for="Exception" />
+            <tx:method name="*"/>
+        </tx:attributes>
+    </tx:advice>-->
+
+
+
+
+
+
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://localhost:3306/itripdb" />
+        <property name="username" value="root" />
+        <property name="password" value="root" />
+    </bean>
+
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="typeAliasesPackage" value="cn.itrip.beans.pojo" />
+    </bean>
+
+
+    <!-- 注入dao -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="cn.itrip.dao"></property>
+    </bean>
+
+
+
+
+</beans>

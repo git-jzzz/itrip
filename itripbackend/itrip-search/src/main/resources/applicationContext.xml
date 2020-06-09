@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:aop="http://www.springframework.org/schema/aop"
+        xmlns:tx="http://www.springframework.org/schema/tx"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+
+  ">
+
+    <!--扫描注解-->
+    <context:component-scan base-package="cn.itrip.solr.dao"/>
+    <context:component-scan base-package="cn.itrip.solr.service"/>
+    <context:component-scan base-package="cn.itrip.service"/>
+
+    <!--定义solr的server-->
+    <bean id="httpSolrClient"
+          class="org.apache.solr.client.solrj.impl.HttpSolrClient">
+        <constructor-arg index="0" value="http://localhost:8080/solr/hotel"/>
+        <!-- 建立连接的最长时间 -->
+        <!--<property name="connectionTimeout"
+       value="${solr.connectionTimeout}"/>-->
+        <property name="connectionTimeout" value="3000"/>
+    </bean>
+
+
+
+</beans>

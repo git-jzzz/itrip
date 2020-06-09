@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:aop="http://www.springframework.org/schema/aop"
+        xmlns:tx="http://www.springframework.org/schema/tx"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+
+  ">
+
+<bean id="alipayConfig" class="cn.itrip.trade.config.AlipayConfig">
+        <property name="appid" value="2016101500693427" />
+    <!--应用私钥-->
+    <property name="rsaPrivateKey" value="MIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDoc7HwltxQgtrMctCKVAIvC8h6xDpf8o/kzXOQQlChtIvmzhLYXMHBECYFBPvYDTW5MGz0ewYoKHWxKhS2fdwtALNQTEzmX+C8xY3waRcm5ty7B+0Yt5Woou0/1VBxdDNlqmVYIXWEQt81fsehWRcxSaSSIF9P+2tc2WGkVilzMX+pNc0fe/mXWbzRqN5HwXDev1FNZa9bCMRXu1H+kt6+3yGJ+9uUB0WyQDG/dEgcf0g9DOXvVJrqN/IvdZF6THXO/y5LKTo6/P2VXJlVJwmuv/S+Z8d9ulsoyYg9/FzdKfU5KSDAEUBWah0ZGgxaEVe9rf6La3trfncV5XjYwGK7AgMBAAECggEBAM8S8bsPyWf3ig6DYX8441EhwBCNais7HDCJTZ9/U/EZs1+CyIrx5rCkQBpMnEWVTvyQRR9t0MhJcr7Ga/k+GbwFWbf4oLDBTKUdoBpApB1Fn/EFWJOiR7IYoh0xXB4VlAvHRczC0btnDwzKye/UO7LulaqPKBlKMhRemnsZPoecJ8d5AIb6Xvyd5PJvVpN9DOZXLij0V89f4GBj2WtXuy44ANjkJtCQzgbaeHi+HmTWmJePxR59gme44GY5TrKBFR6+lsfxUVat90zI1cYFFTIpalB55j+q8zKrLnmy0FMqO4do90Z8hw8a20a7qZYfvTqeFq9O7GZnR2GZh/R92/ECgYEA/n8m2eoqduqfQSOkmqRmhS9ngdYd4ohPUs9UjqkBIp7KGnJu6IKICATWeHzZdZJoHu82l5lVFl/jK7bPTk8cG8echU50cQ+wWtDGefTiKFz9JAK3t36Hb7ru8ZlbY8FIFZmbo5apU/a+0tJLV/9BWK+VhuXrbqRH/lPADuRPms0CgYEA6dM1Fwq4K5GHg8pXib2PoCcw7D041d224AFRnG0Tfaz0l5slbobdg5MMd+JzJsl090WBE+2AvLkly3cbdVL8wG0U4fHgAbVN7NEpaMsU8F8omspZlr0GeqjbB9uQ7Jgu8tAt4JQybexWZYR5BZutVP9vd5Q3ciAPsUar+KYKA6cCgYEA9Vz/xx8l28quye2kWFfiY8vlXl9iJrLGz48G9hfo+Ujgj4j+dvrKTfjkEfxE6D7EVfbJynVRfKXr7oxs6BILhpj3xepzB0JaA+S/Rnubw9CLWrmoCKhbyZQPpSz22IFTj0eur5SlIkeFiNqpO2jkxq1aW1m2l9CZfJGgXHswaI0CgYAYJael6YV7elv0UEEaCGl8sI9s1iW4cF0iZQB4lwscP3BC99K1x1e47saq2sfpiYR6xMK/vBc/Zh9xE6vSQe+4L4uoicIIayDRBAiyucY/zJP06FC4MG0q3aVA+nvM8ypmCPmz55oNoAqMEVIuMhWEYZyxTK0tLAJy3EmGNB90oQKBgQDXl0hPpFw7jJn0CMTtXF7T9cpu2eWw5g/0DlkAzr5QSCqlAlkyldUH6EGXjN045DakGtq5LAAS9asqk9npSKa4F7xwKKh4deoGXfzLaEpOjjpRWKwfiREO/0M5jcxY53MjEc0xsHMbi8VZ9BnI+C4s+oBOLPiCZxKFjuZSlytWqw=="></property>
+    <property name="notifyUrl" value="http://trading.wezoz.com/trade/api/q"></property>
+    <property name="returnUrl" value="http://trading.wezoz.com/trade/api/return"></property>
+    <property name="url" value="https://openapi.alipaydev.com/gateway.do"></property>
+        <property name="charset" value="UTF-8"></property>
+    <property name="format" value="json"></property>
+
+    <!--支付宝公钥-->
+    <property name="alipayprivateKey" value="MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhAdyZXFRHy1GQOIfUfHluvBtIJqpRNnykf3t+DWW/tT5bFyOAyZGTUy9jPBizslIJMZVa5qe37Z9Wq8J5zc1OapWcE9Zpyex5clYRtJRYjYEGRu7KvwbSzNO4TLyp9CD30gemAjxesVni5SvSeBFEVzIwTSbxCwTWYfbLTEvwuHMM18Xk4UMCUi3sKfNUVpY6g7huxVf5GKtL5/6iR6D8X9wzO+5ZgZoiOUVWi34t8n1cssGMx41xe/dtwVEPy4eNQt6pxxVeDy0t9qzcoRQIo+JghaUI0J4PGChwNfH+aw02uqSFFKHKeHr3A4YPEcCGb5VIth0JfpS7S+SwgOJdwIDAQAB"></property>
+    <property name="logPath" value="/logs"></property>
+    <property name="signType" value="RSA2"></property>
+    <!-- <property name="paymentSuccessUrl" value="../success.jsp"></property>
+     <property name="paymentFailureUrl" value="../fail.jsp"></property>-->
+    <property name="paymentSuccessUrl" value="http://itrip.project.bdqn.cn/index.html#/orderpaystate?orderNo=%s&amp;id=%s"/>
+    <property name="paymentFailureUrl" value="http://itrip.project.bdqn.cn/index.html#/orderpaystate?orderNo=%s&amp;id=%s&amp;state=0"/>
+
+</bean>
+
+
+
+
+</beans>
